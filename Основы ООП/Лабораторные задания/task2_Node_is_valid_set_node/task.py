@@ -18,8 +18,8 @@ class Node:
         return f"Node({self.value}, {self.next})"
 
     def is_valid(self, node: Any) -> None:
-        # TODO метод проверки корректности связываемого узла
-        ...
+        if not isinstance(node, type(None)):
+            raise TypeError('Тип данных не верный')
 
     def set_next(self, next_: Optional["Node"] = None) -> None:
         # TODO метод должен проверять корректность узла и устанавливать значение атрибуту next

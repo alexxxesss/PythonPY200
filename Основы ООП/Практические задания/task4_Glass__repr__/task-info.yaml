@@ -10,14 +10,14 @@ files:
   visible: true
   placeholders:
   - offset: 315
-    length: 94
+    length: 63
     placeholder_text: '...  # TODO метод должен возвращать строку, по которой можно
       инициализировать экземпляр класса'
     initial_state:
       length: 94
       offset: 315
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Unchecked
     encrypted_possible_answer: return f"Glass({self.capacity_volume}, {self.occupied_volume})"
   text: |

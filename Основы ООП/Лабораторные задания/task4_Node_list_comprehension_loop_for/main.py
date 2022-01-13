@@ -18,7 +18,7 @@ class Node:
 
 
 if __name__ == "__main__":
-    list_nodes = ...  # TODO с помощью list comprehension сделать список узлов со значениями от 0 до 9
+    list_nodes = [Node(value) for value in range(10)]
     print(list_nodes)
-
-    # TODO распечатать значения узлов
+    for elem in list_nodes:
+        print(elem.value)
