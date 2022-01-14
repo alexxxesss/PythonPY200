@@ -5,21 +5,33 @@ class Glass:
 
     def __init__(self, capacity_volume: Union[int, float], occupied_volume: Union[int, float]):
 
-        self.__capacity_volume = self.__check_capacity_volume(capacity_volume)
+        self.__capacity_volume = None
+        self.__init_capacity_volume(capacity_volume)
         self.__occupied_volume = self.__check_occupied_volume(occupied_volume)
 
         self.__check_overflow(self.__capacity_volume, self.__occupied_volume)
 
-    @staticmethod
-    def __check_capacity_volume(value: Union[int, float]) -> Union[int, float]:
+    def __init_capacity_volume(self, value: Union[int, float]) -> Union[int, float]:
+        """
+        Функция проверяет задаваемый объем стакана
+
+        :param value: значение объема стакана
+        :return: значение задаваемого объема стакана после проверки типов
+        """
         if not isinstance(value, (int, float)):
             raise TypeError
         if not value > 0:
             raise ValueError
-        return value
+        self.__capacity_volume = value
 
     @staticmethod
     def __check_occupied_volume(value):
+        """
+        Функция проверяет занятый объем стакана
+
+        :param value: значение занятого объема стакана
+        :return: значение занятого объема стакана после проверки типов
+        """
         if not isinstance(value, (int, float)):
             raise TypeError
         if value < 0:
