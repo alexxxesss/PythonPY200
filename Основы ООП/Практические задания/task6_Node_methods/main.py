@@ -27,3 +27,4 @@ if __name__ == '__main__':
 
     print(first_node.get_value())
     print(second_node.get_next())
+
