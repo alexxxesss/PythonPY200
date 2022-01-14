@@ -55,7 +55,6 @@ if __name__ == "__main__":
     print(glass2.get_capacity_volume(), glass2.get_occupied_volume())
 
     glass1.add_water(50)
-
     print(glass1.get_capacity_volume(), glass1.get_occupied_volume())
     print(glass2.get_capacity_volume(), glass2.get_occupied_volume())
 

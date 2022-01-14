@@ -59,4 +59,3 @@ if __name__ == "__main__":
     g1 = Glass(200, 100)  # экземпляр класса
     print(g1.get_capacity_volume())
     print(g1.get_occupied_volume())
-
