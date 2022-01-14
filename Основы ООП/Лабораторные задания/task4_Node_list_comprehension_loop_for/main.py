@@ -22,3 +22,4 @@ if __name__ == "__main__":
     print(list_nodes)
     for elem in list_nodes:
         print(elem.value)
+
