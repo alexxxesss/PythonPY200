@@ -21,7 +21,7 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 543
+  - offset: 541
     length: 37
     placeholder_text: '...  # TODO с помощью list comprehension сделать список узлов
       со значениями от 0 до 9'
@@ -32,7 +32,7 @@ files:
     selected: true
     status: Solved
     encrypted_possible_answer: '[Node(value) for value in range(10)]'
-  - offset: 631
+  - offset: 629
     length: 25
     placeholder_text: '# TODO распечатать значения узлов'
     initial_state:

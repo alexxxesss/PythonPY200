@@ -4,16 +4,16 @@ from typing import Any, Optional
 class Node:
     """ Класс, который описывает узел связного списка. """
 
-    def __init__(self, value: Any, next_: Optional["Node"] = None):
+    def __init__(self, value: Any, next: Optional["Node"] = None):
         """
         Создаем новый узел для односвязного списка
         :param value: Любое значение, которое помещено в узел
-        :param next_: следующий узел, если он есть
+        :param next: следующий узел, если он есть
         """
         self.value = value
 
         self.next_node = None
-        self.set_next(next_)
+        self.set_next(next)
 
     def __repr__(self) -> str:
         return f"Node({self.value}, {self.next_node})"
@@ -22,9 +22,9 @@ class Node:
         if not isinstance(node, (type(None), Node)):
             raise TypeError('Тип данных не верный')
 
-    def set_next(self, next_: Optional["Node"] = None) -> None:
-        self.is_valid(next_)
-        self.next_node = next_
+    def set_next(self, next: Optional["Node"] = None) -> None:
+        self.is_valid(next)
+        self.next_node = next
 
 
 if __name__ == '__main__':
@@ -37,3 +37,4 @@ if __name__ == '__main__':
 
     print(first_node)
     print(second_node)
+
