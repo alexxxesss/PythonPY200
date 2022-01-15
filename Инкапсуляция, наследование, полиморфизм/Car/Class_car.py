@@ -31,7 +31,7 @@ class Car:
     def driver(self, driver: Driver):
         if not isinstance(driver, Driver):
             raise DriverTypeError(f'Ожидается {type(Driver)}, получено {type(driver)}')
-        self.driver = driver
+        self.__driver = driver
 
     # def set_driver(self, driver: Driver):
     #     if not isinstance(driver, Driver):
@@ -45,7 +45,7 @@ class Car:
 if __name__ == "__main__":
 
     car = Car("Черный", "седан", "модель", "бензин", "автомат", "люкс")
-    car.set_driver(Driver("Иван"))
+    car.driver = Driver("Иван")
     print(car.driver)
 
 # class Nissan(Car):
