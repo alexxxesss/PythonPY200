@@ -33,6 +33,7 @@ class Car:
             raise DriverTypeError(f'Ожидается {type(Driver)}, получено {type(driver)}')
         self.__driver = driver
 
+    # Эквивалент свойствам (property):
     # def set_driver(self, driver: Driver):
     #     if not isinstance(driver, Driver):
     #         raise DriverTypeError(f'Ожидается {type(Driver)}, получено {type(driver)}')
