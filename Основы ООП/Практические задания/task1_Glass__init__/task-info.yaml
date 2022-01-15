@@ -40,7 +40,7 @@ files:
       glass1 = Glass(200, 100)  # экземпляр класса
           glass2 = Glass(500, 50)  # экземпляр класса
   - offset: 1140
-    length: 58
+    length: 57
     placeholder_text: '# TODO попробовать инициализировать не корректные объекты'
     initial_state:
       length: 57
