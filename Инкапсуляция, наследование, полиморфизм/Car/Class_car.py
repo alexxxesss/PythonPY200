@@ -82,14 +82,14 @@ class Car:
         except (EngineIsNotRunning, DriverNotFoundError) as e:
             print(f'Машина не может начать движение, т.к. {e}')
 
-    @property
-    def _mileage(self):
-        repr(self.__mileage)
-
-    @_mileage.setter
-    def _mileage(self):
-        if not isinstance(mileage, (int, float)):
-            raise T
+    # @property
+    # def _mileage(self):
+    #     return repr(self.__mileage)
+    #
+    # @_mileage.setter
+    # def _mileage(self):
+    #     if not isinstance(mileage, (int, float)):
+    #         raise T
 
 
 if __name__ == "__main__":
