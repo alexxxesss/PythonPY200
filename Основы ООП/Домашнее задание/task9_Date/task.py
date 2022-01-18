@@ -5,15 +5,15 @@ class Date:
         self.month = None
         self.year = None
 
-        self.check_attr(day, month, year)
+        self.init_attr(day, month, year)
 
-    def check_attr(self, day, month, year):
+    def init_attr(self, day, month, year):
         if isinstance(day, int) and isinstance(month, int) and isinstance(year, int):
             self.day = day
             self.month = month
             self.year = year
         else:
-            raise TypeError('Введено неверное значение')
+            raise TypeError('Вы ввели неверный тип данных')
 
     def __repr__(self):
         return f"Date({self.day}, {self.month}, {self.year})"
