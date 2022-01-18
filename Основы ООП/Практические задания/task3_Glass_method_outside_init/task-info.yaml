@@ -23,7 +23,7 @@ files:
       offset: 146
     initialized_from_dependency: false
     selected: true
-    status: Solved
+    status: Unchecked
     encrypted_possible_answer: |-
       self.capacity_volume = None
               self.init_capacity_volume(capacity_volume)
@@ -32,11 +32,11 @@ files:
     placeholder_text: '#  TODO создать метод, который будет инициализировать атрибут
       capacity_volume'
     initial_state:
-      length: 159
+      length: 158
       offset: 1736
     initialized_from_dependency: false
     selected: true
-    status: Solved
+    status: Unchecked
     encrypted_possible_answer: |2-
           def init_capacity_volume(self, capacity_volume: Union[int, float]):
               if not isinstance(capacity_volume, (int, float)):
@@ -48,31 +48,31 @@ files:
     length: 32
     placeholder_text: '...  # TODO инициализировать экземпляр класса Glass'
     initial_state:
-      length: 33
+      length: 32
       offset: 1862
     initialized_from_dependency: false
     selected: false
-    status: Solved
+    status: Unchecked
     encrypted_possible_answer: 'glass = Glass(200, 100)  # экземпляр класса'
   - offset: 1862
     length: 32
     placeholder_text: '...)  # TODO распечатать атрибут capacity_volume'
     initial_state:
-      length: 33
+      length: 32
       offset: 1862
     initialized_from_dependency: false
     selected: false
-    status: Solved
+    status: Unchecked
     encrypted_possible_answer: glass.capacity_volume)
   - offset: 1862
     length: 32
     placeholder_text: '...)  # TODO распечатать атрибут occupied_volume'
     initial_state:
-      length: 33
+      length: 32
       offset: 1862
     initialized_from_dependency: false
     selected: true
-    status: Solved
+    status: Unchecked
     encrypted_possible_answer: glass.occupied_volume)
   text: |
     from typing import Union
@@ -104,8 +104,5 @@ files:
 - name: __init__.py
   visible: false
   learner_created: false
-status: Solved
-feedback:
-  message: Congratulations!
-  time: Fri, 14 Jan 2022 20:11:11 UTC
+status: Unchecked
 record: -1

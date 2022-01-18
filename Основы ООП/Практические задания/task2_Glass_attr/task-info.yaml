@@ -8,7 +8,7 @@ files:
     placeholder_text: '...  # TODO инициализировать ещё один стакан'
     initial_state:
       length: 0
-      offset: 2017
+      offset: 2016
     initialized_from_dependency: false
     selected: false
     status: Solved
@@ -18,7 +18,7 @@ files:
     placeholder_text: '...)  # TODO распечатать атрибуты экземпляра glass2'
     initial_state:
       length: 0
-      offset: 2018
+      offset: 2017
     initialized_from_dependency: false
     selected: true
     status: Solved
@@ -28,7 +28,7 @@ files:
     placeholder_text: '#  TODO доливаем воды в первый стакан'
     initial_state:
       length: 0
-      offset: 2019
+      offset: 2018
     initialized_from_dependency: false
     selected: true
     status: Solved
@@ -38,7 +38,7 @@ files:
     placeholder_text: '#  TODO сравнить id объектов'
     initial_state:
       length: 0
-      offset: 2020
+      offset: 2019
     initialized_from_dependency: false
     selected: true
     status: Solved
@@ -80,7 +80,5 @@ files:
   visible: false
   learner_created: false
 status: Solved
-feedback:
-  time: Fri, 14 Jan 2022 19:42:32 UTC
 record: -1
 post_submission_on_open: true
