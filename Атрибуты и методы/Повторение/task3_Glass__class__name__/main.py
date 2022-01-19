@@ -13,4 +13,3 @@ class Glass:
 if __name__ == "__main__":
     glass = Glass(200, 100)
     print(glass)
-
