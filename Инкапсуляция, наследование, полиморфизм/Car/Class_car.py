@@ -67,6 +67,7 @@ class Car:
             raise EngineIsNotRunning("двигатель не запущен")
         if not self.__check_driver():
             raise DriverNotFoundError("водитель не найден")
+        return True
 
         # if self.__engine_status and self.__check_driver():
         #     return True
