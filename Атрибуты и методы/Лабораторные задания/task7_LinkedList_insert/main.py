@@ -96,7 +96,30 @@ class LinkedList:
         return f"{self.to_list()}"
 
     def insert(self, index: int, value: Any) -> None:
-        ...  # TODO реализовать алгоритм вставки элемента
+        """ Метод добавдяет узел по указанному индексу. """
+
+        if not isinstance(index, int):
+            raise TypeError()
+
+        if index < 0:
+            raise IndexError()
+
+        append_node = Node(value)
+
+        if index == 0:
+            append_node.next = self.head
+            self.head = append_node
+            self.len += 1
+        elif index >= self.len:
+            self.append(value)
+        else:
+            prev_node = self.step_by_step_on_nodes(index - 1)
+            next_node = self.step_by_step_on_nodes(index)
+
+            self.linked_nodes(prev_node, append_node)
+            self.linked_nodes(append_node, next_node)
+
+            self.len += 1
 
 
 if __name__ == '__main__':
