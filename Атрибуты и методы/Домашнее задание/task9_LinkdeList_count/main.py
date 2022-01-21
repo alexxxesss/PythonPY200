@@ -131,7 +131,7 @@ class LinkedList:
         raise ValueError("Значение не найдено")
 
     def count(self, value: int):
-        """ Метод возвращает значение узла по указанному индексу. """
+        """ Метод возвращает возвращает количество раз, когда указанный элемент появляется в списке. """
         count = 0
         for index in range(self.len):
             if value == self.step_by_step_on_nodes(index).value:
