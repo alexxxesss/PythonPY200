@@ -122,7 +122,7 @@ class LinkedList:
             self.len += 1
 
     def index(self, value: int, start: int = 0, stop: Optional[int] = None):
-        """ Метод возвращает значение узла по указанному индексу. """
+        """ Метод возвращает значение индекса элемента по его значению. """
         if stop is None:
             stop = self.len
         for index in range(start, stop):
@@ -139,4 +139,3 @@ if __name__ == '__main__':
     print(linked_list.index(8))
 
     print(linked_list.index(8, 0, 5))
-
