@@ -3,34 +3,34 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 555
-    length: 11
+  - offset: 569
+    length: 217
     placeholder_text: '...  # TODO'
     initial_state:
       length: 11
       offset: 555
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: '...'
-  - offset: 709
-    length: 11
+  - offset: 1200
+    length: 0
     placeholder_text: '...  # TODO'
     initial_state:
       length: 11
       offset: 709
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: '...'
-  - offset: 845
-    length: 11
+  - offset: 1316
+    length: 190
     placeholder_text: '...  # TODO'
     initial_state:
       length: 11
       offset: 845
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: '...'
   text: |
