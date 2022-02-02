@@ -7,7 +7,8 @@ class LinkedList(MutableSequence):
     ABSTRACT_CLASS_NODE = Node
 
     def __init__(self, data: Iterable = None):
-        """Конструктор связного списка"""
+        """ Конструктор связного списка. """
+
         self._len = 0
         self._head: Optional[Node] = None
 
@@ -17,15 +18,19 @@ class LinkedList(MutableSequence):
 
     def __getitem__(self, index: int) -> Any:
         """ Метод возвращает значение узла по указанному индексу. """
+
         node = self.step_by_step_on_nodes(index)
         return node.value
 
     def __setitem__(self, index: int, value: Any) -> None:
         """ Метод устанавливает значение узла по указанному индексу. """
+
         node = self.step_by_step_on_nodes(index)
         node.value = value
 
     def __delitem__(self, index: int):
+        """ Метод удаляет узел по указанному индексу. """
+
         if not isinstance(index, int):
             raise TypeError()
 
@@ -33,7 +38,7 @@ class LinkedList(MutableSequence):
             raise IndexError()
 
         if index == 0:
-            self.head = self._head.next
+            self._head = self._head.next
         elif index == self._len - 1:
             tail = self.step_by_step_on_nodes(index - 1)
             tail.next = None
@@ -56,23 +61,26 @@ class LinkedList(MutableSequence):
         return f"{self.__class__.__name__}({self.to_list()})"
 
     @staticmethod
-    def linked_nodes(left_node: Node, right_node: Optional[Node] = None) -> None:
+    def linked_nodes(left_node: ABSTRACT_CLASS_NODE, right_node: Optional[ABSTRACT_CLASS_NODE] = None) -> None:
         """
         Функция, которая связывает между собой два узла.
 
         :param left_node: Левый или предыдущий узел
         :param right_node: Правый или следующий узел
         """
-        left_node.next(right_node)
+        left_node.next = right_node
 
     def to_list(self) -> list:
+        """" Метод, который формирует Python список из связного списка. """
+
         return [linked_list_value for linked_list_value in self]
 
     def append(self, value: Any):
         """ Добавление элемента в конец связного списка. """
+
         append_node = self.ABSTRACT_CLASS_NODE(value)
 
-        if self.head is None:
+        if self._head is None:
             self._head = append_node
         else:
             last_index = self._len - 1
@@ -88,17 +96,17 @@ class LinkedList(MutableSequence):
         if not isinstance(index, int):
             raise TypeError()
 
-        if not 0 <= index < self._len:  # для for
+        if not 0 <= index < self._len:
             raise IndexError()
 
-        current_node = self.head
+        current_node = self._head
         for _ in range(index):
             current_node = current_node.next
 
         return current_node
 
     def insert(self, index: int, value: Any) -> None:
-        """ Метод добавдяет узел по указанному индексу. """
+        """ Метод добавдяет узел с указанным значением левосторонней вставкой от указанного индекса. """
 
         if not isinstance(index, int):
             raise TypeError()
@@ -109,7 +117,7 @@ class LinkedList(MutableSequence):
         append_node = Node(value)
 
         if index == 0:
-            append_node.next = self.head
+            append_node.next = self._head
             self._head = append_node
             self._len += 1
         elif index >= self._len:
@@ -125,6 +133,7 @@ class LinkedList(MutableSequence):
 
     def index(self, value: int, start: int = 0, stop: Optional[int] = None):
         """ Метод возвращает значение индекса элемента по его значению. """
+
         if stop is None:
             stop = self._len
         for index in range(start, stop):
@@ -134,6 +143,7 @@ class LinkedList(MutableSequence):
 
     def count(self, value: int):
         """ Метод возвращает возвращает количество раз, когда указанный элемент появляется в списке. """
+
         count = 0
         for index in range(self._len):
             if value == self.step_by_step_on_nodes(index).value:
@@ -142,8 +152,10 @@ class LinkedList(MutableSequence):
 
     def extend(self, add_linked_list: Optional["LinkedList"] = None):
         """ Добавление связного списка в конец связного списка. """
-        first_node_add_list = add_linked_list.step_by_step_on_nodes(0)
-        if add_linked_list is not None:
+        if len(add_linked_list) == 0:
+            print("Попытка добавить пустой список, в списке ничего не поменяется")
+        elif add_linked_list is not None:
+            first_node_add_list = add_linked_list.step_by_step_on_nodes(0)
             last_index = self._len - 1
             last_node = self.step_by_step_on_nodes(last_index)
 
@@ -153,6 +165,7 @@ class LinkedList(MutableSequence):
 
     def pop(self, index: int = None):
         """ Возвращает значение элемента связного списка по его индексу, а затем удаляет. """
+
         if index is None:
             index = self._len - 1
         elif index > self._len - 1:
@@ -167,4 +180,37 @@ class DoubleLinkedList(LinkedList):
 
 
 if __name__ == "__main__":
-    ...
+
+    list_value = [1, 22, 3, 4, 5, 6, 22, 8, 9, 10, 22]
+    list_value_2 = [111, 222, 333, 444, 555]
+    linked_list = LinkedList(list_value)
+    linked_list_2 = LinkedList(list_value_2)
+    print(linked_list)
+    print(linked_list_2)
+    print("-" * 15)
+    print(repr(linked_list))
+    print(f'Длина односвязного списка: {len(linked_list)}')
+    print("-" * 15)
+    linked_list.__setitem__(4, 99)
+    print(linked_list)
+    print(linked_list.__getitem__(4))
+    print("-" * 15)
+    linked_list.__delitem__(4)
+    print(linked_list)
+    print(f'Длина односвязного списка: {len(linked_list)}')
+    print("-" * 15)
+    linked_list.insert(4, 99)
+    print(linked_list)
+    print(f'Длина односвязного списка: {len(linked_list)}')
+    print("-" * 15)
+    print(linked_list.index(10))
+    print("-" * 15)
+    print(linked_list.count(22))
+    print("-" * 15)
+    linked_list.extend(linked_list_2)
+    print(linked_list)
+    print(f'Длина односвязного списка: {len(linked_list)}')
+    print("-" * 15)
+    print(linked_list.pop(14))
+    print(linked_list)
+    print(f'Длина односвязного списка: {len(linked_list)}')
