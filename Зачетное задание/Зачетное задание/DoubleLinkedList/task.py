@@ -28,14 +28,14 @@ class LinkedList(MutableSequence):
         node = self.step_by_step_on_nodes(index)
         node.value = value
 
-    def __delitem__(self, index: int):
+    def __delitem__(self, index: int) -> None:
         """ Метод удаляет узел по указанному индексу. """
 
         if not isinstance(index, int):
-            raise TypeError()
+            raise TypeError("Тип данных введен неверно")
 
         if not 0 <= index < self._len:  # для for
-            raise IndexError()
+            raise IndexError("Значение индекса некорректно")
 
         if index == 0:
             self._head = self._head.next
@@ -51,7 +51,7 @@ class LinkedList(MutableSequence):
 
         self._len -= 1
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self._len
 
     def __str__(self) -> str:
@@ -75,7 +75,7 @@ class LinkedList(MutableSequence):
 
         return [linked_list_value for linked_list_value in self]
 
-    def append(self, value: Any):
+    def append(self, value: Any) -> None:
         """ Добавление элемента в конец связного списка. """
 
         append_node = self.ABSTRACT_CLASS_NODE(value)
@@ -90,14 +90,14 @@ class LinkedList(MutableSequence):
 
         self._len += 1
 
-    def step_by_step_on_nodes(self, index: int) -> Node:
+    def step_by_step_on_nodes(self, index: int) -> ABSTRACT_CLASS_NODE:
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
 
         if not isinstance(index, int):
-            raise TypeError()
+            raise TypeError("Тип данных введен неверно")
 
         if not 0 <= index < self._len:
-            raise IndexError()
+            raise IndexError("Значение индекса некорректно")
 
         current_node = self._head
         for _ in range(index):
@@ -109,10 +109,10 @@ class LinkedList(MutableSequence):
         """ Метод добавдяет узел с указанным значением левосторонней вставкой от указанного индекса. """
 
         if not isinstance(index, int):
-            raise TypeError()
+            raise TypeError("Тип данных введен неверно")
 
         if index < 0:
-            raise IndexError()
+            raise IndexError("Введен несуществующий индекс")
 
         append_node = Node(value)
 
@@ -131,7 +131,7 @@ class LinkedList(MutableSequence):
 
             self._len += 1
 
-    def index(self, value: int, start: int = 0, stop: Optional[int] = None):
+    def index(self, value: int, start: int = 0, stop: Optional[int] = None) -> int:
         """ Метод возвращает значение индекса элемента по его значению. """
 
         if stop is None:
@@ -141,7 +141,7 @@ class LinkedList(MutableSequence):
                 return index
         raise ValueError("Значение не найдено")
 
-    def count(self, value: int):
+    def count(self, value: int) -> int:
         """ Метод возвращает возвращает количество раз, когда указанный элемент появляется в списке. """
 
         count = 0
@@ -150,7 +150,7 @@ class LinkedList(MutableSequence):
                 count += 1
         return count
 
-    def extend(self, add_linked_list: Optional["LinkedList"] = None):
+    def extend(self, add_linked_list: Optional["LinkedList"] = None) -> None:
         """ Добавление связного списка в конец связного списка. """
         if len(add_linked_list) == 0:
             print("Попытка добавить пустой список, в списке ничего не поменяется")
@@ -163,7 +163,7 @@ class LinkedList(MutableSequence):
 
             self._len += add_linked_list._len
 
-    def pop(self, index: int = None):
+    def pop(self, index: int = None) -> ABSTRACT_CLASS_NODE:
         """ Возвращает значение элемента связного списка по его индексу, а затем удаляет. """
 
         if index is None:
