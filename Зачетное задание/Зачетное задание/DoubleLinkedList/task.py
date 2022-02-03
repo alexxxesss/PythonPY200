@@ -1,6 +1,6 @@
 from collections.abc import MutableSequence
 from typing import Any, Optional, Iterable
-from node import Node
+from node import Node, DoubleLinkedNode
 
 
 class LinkedList(MutableSequence):
@@ -10,7 +10,7 @@ class LinkedList(MutableSequence):
         """ Конструктор связного списка. """
 
         self._len = 0
-        self._head: Optional[Node] = None
+        self._head = None
 
         if data is not None:
             for value in data:
@@ -90,7 +90,7 @@ class LinkedList(MutableSequence):
 
         self._len += 1
 
-    def step_by_step_on_nodes(self, index: int) -> ABSTRACT_CLASS_NODE:
+    def step_by_step_on_nodes(self, index: int) -> "ABSTRACT_CLASS_NODE":
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
 
         if not isinstance(index, int):
@@ -114,7 +114,7 @@ class LinkedList(MutableSequence):
         if index < 0:
             raise IndexError("Введен несуществующий индекс")
 
-        append_node = Node(value)
+        append_node = self.ABSTRACT_CLASS_NODE(value)
 
         if index == 0:
             append_node.next = self._head
@@ -174,34 +174,110 @@ class LinkedList(MutableSequence):
         self.__delitem__(index)
         return del_node
 
+    def remove(self, val: Any) -> None:
+        """Удаляет первую ноду при первом совпадении node.value с заданным значением"""
+
+        for index, node in enumerate(self):
+            if node.value == val:
+                del self[index]
+                return None
+        raise ValueError("Node с таким значением отсутствует")
+
 
 class DoubleLinkedList(LinkedList):
-    ...
+    ABSTRACT_CLASS_NODE = DoubleLinkedNode
+
+    def __delitem__(self, index: int) -> None:
+        """ Метод удаляет узел по указанному индексу. """
+
+        if not isinstance(index, int):
+            raise TypeError("Тип данных введен неверно")
+
+        if not 0 <= index < self._len:  # для for
+            raise IndexError("Значение индекса некорректно")
+
+        if index == 0:
+            self._head = self._head.next
+            self._head.prev = None
+        elif index == self._len - 1:
+            tail = self.step_by_step_on_nodes(index - 1)
+            tail.next = None
+        else:
+            prev_node = self.step_by_step_on_nodes(index - 1)
+            del_node = prev_node.next
+            next_node = del_node.next
+
+            self.linked_nodes(prev_node, next_node)
+
+        self._len -= 1
+
+    @staticmethod
+    def linked_nodes(left_node: ABSTRACT_CLASS_NODE, right_node: Optional[ABSTRACT_CLASS_NODE] = None) -> None:
+        """Связывает двусвязные ноды"""
+
+        left_node.next = right_node
+        right_node.prev = left_node
 
 
 if __name__ == "__main__":
 
+    # list_value = [1, 22, 3, 4, 5, 6, 22, 8, 9, 10, 22]
+    # list_value_2 = [111, 222, 333, 444, 555]
+    # linked_list = LinkedList(list_value)
+    # linked_list_2 = LinkedList(list_value_2)
+    # print(linked_list)
+    # print(linked_list_2)
+    # print("-" * 15)
+    # print(repr(linked_list))
+    # print(f'Длина односвязного списка: {len(linked_list)}')
+    # print("-" * 15)
+    # linked_list.__setitem__(4, 99)
+    # print(linked_list)
+    # print(linked_list.__getitem__(4))
+    # print("-" * 15)
+    # del linked_list[4]
+    # print(linked_list)
+    # print(f'Длина односвязного списка: {len(linked_list)}')
+    # print("-" * 15)
+    # linked_list.insert(4, 99)
+    # print(linked_list)
+    # print(f'Длина односвязного списка: {len(linked_list)}')
+    # print("-" * 15)
+    # print(linked_list.index(10))
+    # print("-" * 15)
+    # print(linked_list.count(22))
+    # print("-" * 15)
+    # linked_list.extend(linked_list_2)
+    # print(linked_list)
+    # print(f'Длина односвязного списка: {len(linked_list)}')
+    # print("-" * 15)
+    # print(linked_list.pop(14))
+    # print(linked_list)
+    # print(f'Длина односвязного списка: {len(linked_list)}')
+    #
+    # print(f'\n--------------------------------------\n')
+
     list_value = [1, 22, 3, 4, 5, 6, 22, 8, 9, 10, 22]
     list_value_2 = [111, 222, 333, 444, 555]
-    linked_list = LinkedList(list_value)
-    linked_list_2 = LinkedList(list_value_2)
+    linked_list = DoubleLinkedList(list_value)
+    linked_list_2 = DoubleLinkedList(list_value_2)
     print(linked_list)
     print(linked_list_2)
     print("-" * 15)
     print(repr(linked_list))
-    print(f'Длина односвязного списка: {len(linked_list)}')
+    print(f'Длина двусвязного списка: {len(linked_list)}')
     print("-" * 15)
     linked_list.__setitem__(4, 99)
     print(linked_list)
     print(linked_list.__getitem__(4))
     print("-" * 15)
-    linked_list.__delitem__(4)
+    del linked_list[4]
     print(linked_list)
-    print(f'Длина односвязного списка: {len(linked_list)}')
+    print(f'Длина двусвязного списка: {len(linked_list)}')
     print("-" * 15)
     linked_list.insert(4, 99)
     print(linked_list)
-    print(f'Длина односвязного списка: {len(linked_list)}')
+    print(f'Длина двусвязного списка: {len(linked_list)}')
     print("-" * 15)
     print(linked_list.index(10))
     print("-" * 15)
@@ -209,8 +285,8 @@ if __name__ == "__main__":
     print("-" * 15)
     linked_list.extend(linked_list_2)
     print(linked_list)
-    print(f'Длина односвязного списка: {len(linked_list)}')
+    print(f'Длина двуосвязного списка: {len(linked_list)}')
     print("-" * 15)
     print(linked_list.pop(14))
     print(linked_list)
-    print(f'Длина односвязного списка: {len(linked_list)}')
+    print(f'Длина двусвязного списка: {len(linked_list)}')
