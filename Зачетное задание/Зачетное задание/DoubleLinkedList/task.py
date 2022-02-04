@@ -163,7 +163,7 @@ class LinkedList(MutableSequence):
 
             self._len += add_linked_list._len
 
-    def pop(self, index: int = None) -> ABSTRACT_CLASS_NODE:
+    def pop(self, index: int = None) -> "ABSTRACT_CLASS_NODE":
         """ Возвращает значение элемента связного списка по его индексу, а затем удаляет. """
 
         if index is None:
