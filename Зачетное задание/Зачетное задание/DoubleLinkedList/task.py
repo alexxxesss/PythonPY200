@@ -152,6 +152,7 @@ class LinkedList(MutableSequence):
 
     def extend(self, add_linked_list: Optional["LinkedList"] = None) -> None:
         """ Добавление связного списка в конец связного списка. """
+
         if len(add_linked_list) == 0:
             print("Попытка добавить пустой список, в списке ничего не поменяется")
         elif add_linked_list is not None:
